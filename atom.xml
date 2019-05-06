@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-06T01:32:38.376Z</updated>
+  <updated>2019-05-06T03:40:07.049Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开始记录学习生活</title>
+    <link href="http://yoursite.com/2019/05/06/%E5%BC%80%E5%A7%8B%E8%AE%B0%E5%BD%95%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/"/>
+    <id>http://yoursite.com/2019/05/06/开始记录学习生活/</id>
+    <published>2019-05-06T03:36:47.000Z</published>
+    <updated>2019-05-06T03:40:07.049Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是我用了一天多时间搭建的博客,搭建这个博客的目的在于记录学习生活,记录每天<br>都学到了什么,学习的路是很漫长的,但我坚信一句话”道阻且长,行则将至”,以后要坚<br>持每天都用这种方式记录自己的学习生活.加油</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是我用了一天多时间搭建的博客,搭建这个博客的目的在于记录学习生活,记录每天&lt;br&gt;都学到了什么,学习的路是很漫长的,但我坚信一句话”道阻且长,行则将至”,以后要坚&lt;br&gt;持每天都用这种方式记录自己的学习生活.加油&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>搭建博客真快乐</title>
