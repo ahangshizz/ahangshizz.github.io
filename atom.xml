@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>道阻且长</title>
+  
+  <subtitle>行则将至</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-05-06T01:32:38.376Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>魏行</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>搭建博客真快乐</title>
+    <link href="http://yoursite.com/2019/05/06/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9C%9F%E5%BF%AB%E4%B9%90/"/>
+    <id>http://yoursite.com/2019/05/06/搭建博客真快乐/</id>
+    <published>2019-05-06T01:31:46.000Z</published>
+    <updated>2019-05-06T01:32:38.376Z</updated>
+    
+    <content type="html"><![CDATA[<p>搭建一个博客真开心,希望会成功吧</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;搭建一个博客真开心,希望会成功吧&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
