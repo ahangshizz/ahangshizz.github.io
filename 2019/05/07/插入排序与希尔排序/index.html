@@ -6,19 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>开始记录学习生活 | 道阻且长</title>
+  <title>插入排序与希尔排序 | 道阻且长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我用了一天多时间搭建的博客,搭建这个博客的目的在于记录学习生活,记录每天都学到了什么,学习的路是很漫长的,但我坚信一句话”道阻且长,行则将至”,以后要坚持每天都用这种方式记录自己的学习生活.加油">
+  <meta name="description" content="插入排序插入排序效率最高的时候是这个序列的元素有基本的顺序(如果是升序排列)即是小数在大多在前面,大数大多在后面.还有就是这个序列的元素不要太多">
+<meta name="keywords" content="排序算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="开始记录学习生活">
-<meta property="og:url" content="http://yoursite.com/2019/05/06/开始记录学习生活/index.html">
+<meta property="og:title" content="插入排序与希尔排序">
+<meta property="og:url" content="http://yoursite.com/2019/05/07/插入排序与希尔排序/index.html">
 <meta property="og:site_name" content="道阻且长">
-<meta property="og:description" content="这是我用了一天多时间搭建的博客,搭建这个博客的目的在于记录学习生活,记录每天都学到了什么,学习的路是很漫长的,但我坚信一句话”道阻且长,行则将至”,以后要坚持每天都用这种方式记录自己的学习生活.加油">
+<meta property="og:description" content="插入排序插入排序效率最高的时候是这个序列的元素有基本的顺序(如果是升序排列)即是小数在大多在前面,大数大多在后面.还有就是这个序列的元素不要太多">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-06T03:40:07.049Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190507120328994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190507121525351.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-05-07T04:23:27.047Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="开始记录学习生活">
-<meta name="twitter:description" content="这是我用了一天多时间搭建的博客,搭建这个博客的目的在于记录学习生活,记录每天都学到了什么,学习的路是很漫长的,但我坚信一句话”道阻且长,行则将至”,以后要坚持每天都用这种方式记录自己的学习生活.加油">
+<meta name="twitter:title" content="插入排序与希尔排序">
+<meta name="twitter:description" content="插入排序插入排序效率最高的时候是这个序列的元素有基本的顺序(如果是升序排列)即是小数在大多在前面,大数大多在后面.还有就是这个序列的元素不要太多">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190507120328994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="道阻且长" type="application/atom+xml">
   
@@ -162,27 +166,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-开始记录学习生活" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-插入排序与希尔排序" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      开始记录学习生活
+      插入排序与希尔排序
     </h1>
   
 
         
-        <a href="/2019/05/06/开始记录学习生活/" class="archive-article-date">
-  	<time datetime="2019-05-06T03:36:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
+        <a href="/2019/05/07/插入排序与希尔排序/" class="archive-article-date">
+  	<time datetime="2019-05-07T04:21:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是我用了一天多时间搭建的博客,搭建这个博客的目的在于记录学习生活,记录每天<br>都学到了什么,学习的路是很漫长的,但我坚信一句话”道阻且长,行则将至”,以后要坚<br>持每天都用这种方式记录自己的学习生活.加油</p>
+        <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p><strong>插入排序效率最高的时候是这个序列的元素有基本的顺序(如果是升序排列)即是小数在大多在前面,大数大多在后面.还有就是这个序列的元素不要太多</strong><br><a id="more"></a><br><img src="https://img-blog.csdnimg.cn/20190507120328994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70" alt="插入排序的基本思路"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//插入排序</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span> (arr[i] &lt; arr[i - <span class="number">1</span>]) &#123;</span><br><span class="line">			<span class="keyword">int</span> tmp = arr[i];<span class="comment">//保存以防丢失数据</span></span><br><span class="line">			<span class="keyword">for</span> (j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span> &amp;&amp; tmp &lt; arr[j]; --j) &#123;</span><br><span class="line">				arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line">			&#125;</span><br><span class="line">			arr[j + <span class="number">1</span>] = tmp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print_Arr</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> arr[MAX];</span><br><span class="line">	srand((<span class="keyword">unsigned</span> <span class="keyword">int</span>)time(<span class="literal">NULL</span>));</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAX; ++i) &#123;</span><br><span class="line">		arr[i] = rand() % MAX;</span><br><span class="line">	&#125;</span><br><span class="line">	Print_Arr(arr, MAX);</span><br><span class="line">	InsertSort(arr, MAX);</span><br><span class="line">	Print_Arr(arr, MAX);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p><strong>希尔排序像是插入排序的升级版<br>把数组分组以后再进行插入排序<br>分组的次数是:increasement=sizeof(arr)/3+1<br>分组排序以后序列会有一个大致的顺序<br>最后进行全排序</strong><br><img src="https://img-blog.csdnimg.cn/20190507121525351.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 10</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> increasement = len;</span><br><span class="line">	<span class="keyword">int</span> k;</span><br><span class="line">	<span class="comment">//为了让最后一次全排列可以执行到使用do while语句</span></span><br><span class="line">	<span class="keyword">do</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//计算出这个数列需要分的组数</span></span><br><span class="line">		increasement = increasement / <span class="number">3</span> + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; increasement; ++i) &#123;</span><br><span class="line">			<span class="comment">//与插入排序完全相同,只是把插入排序的增量1换成increasement</span></span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + increasement; j &lt; len; j += increasement) &#123;</span><br><span class="line">				<span class="keyword">int</span> tem = arr[j];</span><br><span class="line">				<span class="keyword">if</span> (arr[j] &lt; arr[j - increasement]) &#123;</span><br><span class="line">					<span class="keyword">for</span> (k = j - increasement; k &gt;= <span class="number">0</span>&amp;&amp;tem&lt;arr[k]; k -= increasement) &#123;</span><br><span class="line">						arr[k + increasement] = arr[k];</span><br><span class="line">					&#125;</span><br><span class="line">					arr[k + increasement] = tem;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">while</span> (increasement&gt;<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print_ShellSort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"------------------------------------------\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> arr[MAX];</span><br><span class="line">	srand((<span class="keyword">unsigned</span> <span class="keyword">int</span>)time(<span class="literal">NULL</span>));</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAX; ++i) &#123;</span><br><span class="line">		arr[i] = rand() % MAX;</span><br><span class="line">	&#125;</span><br><span class="line">	Print_ShellSort(arr, MAX);</span><br><span class="line">	ShellSort(arr, MAX);</span><br><span class="line">	Print_ShellSort(arr, MAX);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -222,6 +229,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">排序算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -272,7 +290,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/06/开始记录学习生活/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/07/插入排序与希尔排序/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -286,18 +304,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/07/二叉树的非递归遍历-排序算法效率-Linux基本命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          二叉树的非递归遍历,排序算法效率,Linux基本命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/06/搭建博客真快乐/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">搭建博客真快乐</div>
+    <a href="/2019/05/07/二叉树的非递归遍历-排序算法效率-Linux基本命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">二叉树的非递归遍历,排序算法效率,Linux基本命令</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -324,7 +333,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入排序"><span class="toc-number">1.</span> <span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#希尔排序"><span class="toc-number">2.</span> <span class="toc-text">希尔排序</span></a></li></ol>
                     </div>
                 </span>
             </div>
