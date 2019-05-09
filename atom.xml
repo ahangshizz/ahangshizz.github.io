@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-08T05:47:48.113Z</updated>
+  <updated>2019-05-09T04:36:48.216Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++多态与函数重载重写浅谈</title>
+    <link href="http://yoursite.com/2019/05/09/C-%E5%A4%9A%E6%80%81%E4%B8%8E%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E9%87%8D%E5%86%99%E6%B5%85%E8%B0%88/"/>
+    <id>http://yoursite.com/2019/05/09/C-多态与函数重载重写浅谈/</id>
+    <published>2019-05-09T04:36:10.000Z</published>
+    <updated>2019-05-09T04:36:48.216Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="C-多态理解"><a href="#C-多态理解" class="headerlink" title="C++多态理解"></a>C++多态理解</h2><p><strong>多态的实现效果</strong><br>多态：同样的调用语句有多种不同的表现形态；<br><a id="more"></a><br><strong>多态实现的三个条件</strong><br>    有继承、有virtual重写、有父类指针（引用）指向子类对象。<br><strong>多态的C++实现</strong><br>   virtual关键字，告诉编译器这个函数要支持多态；不是根据指针类型判断如何调用；而是要根据指针所指向的实际对象类型来判断如何调用<br><strong>多态的理论基础</strong><br>   动态联编PK静态联编。根据实际的对象类型来判断重写函数的调用。<br><strong>多态的重要意义</strong><br>   设计模式的基础 是框架的基石。<br><strong>实现多态的理论基础</strong><br>  函数指针做函数参数<br>C函数指针是C++至高无上的荣耀。C函数指针一般有两种用法（正、反）。</p><h2 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h2><p><em>必须在同一个类中进行<br>子类无法重载父类的函数，父类同名函数将被名称覆盖<br>重载是在编译期间根据参数类型和个数决定函数调用</em></p><h2 id="函数重写"><a href="#函数重写" class="headerlink" title="函数重写"></a>函数重写</h2><p><em>必须发生于父类与子类之间<br>并且父类与子类中的函数必须有完全相同的原型<br>使用virtual声明之后能够产生多态(如果不使用virtual，那叫重定义)<br>多态是在运行期间根据具体对象的类型决定函数调用</em></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;C-多态理解&quot;&gt;&lt;a href=&quot;#C-多态理解&quot; class=&quot;headerlink&quot; title=&quot;C++多态理解&quot;&gt;&lt;/a&gt;C++多态理解&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;多态的实现效果&lt;/strong&gt;&lt;br&gt;多态：同样的调用语句有多种不同的表现形态；&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux基本命令整理</title>
