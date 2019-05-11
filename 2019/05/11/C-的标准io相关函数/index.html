@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>道阻且长</title>
+  <title>C++的标准io相关函数 | 道阻且长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此博客用来作为日常学习记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="道阻且长">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="C++的标准输入输出流函数1.缓冲区的概念缓冲区的小图解2.cin3.cin的相关函数cin.get(一个参数)//接收一个字符cin.get(两个参数)//接收两个字符cin.get(三个参数)//接收三个字符4.cin.getline(数组,数组大小)//数据打包 12345678910111213141516171819202122232425262728293031323334353637">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++的标准io相关函数">
+<meta property="og:url" content="http://yoursite.com/2019/05/11/C-的标准io相关函数/index.html">
 <meta property="og:site_name" content="道阻且长">
-<meta property="og:description" content="此博客用来作为日常学习记录">
+<meta property="og:description" content="C++的标准输入输出流函数1.缓冲区的概念缓冲区的小图解2.cin3.cin的相关函数cin.get(一个参数)//接收一个字符cin.get(两个参数)//接收两个字符cin.get(三个参数)//接收三个字符4.cin.getline(数组,数组大小)//数据打包 12345678910111213141516171819202122232425262728293031323334353637">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019051119364244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-05-11T11:38:06.623Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="道阻且长">
-<meta name="twitter:description" content="此博客用来作为日常学习记录">
+<meta name="twitter:title" content="C++的标准io相关函数">
+<meta name="twitter:description" content="C++的标准输入输出流函数1.缓冲区的概念缓冲区的小图解2.cin3.cin的相关函数cin.get(一个参数)//接收一个字符cin.get(两个参数)//接收两个字符cin.get(三个参数)//接收三个字符4.cin.getline(数组,数组大小)//数据打包 12345678910111213141516171819202122232425262728293031323334353637">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019051119364244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="道阻且长" type="application/atom+xml">
   
@@ -161,16 +165,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-C-的标准io相关函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-C-的标准io相关函数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/11/C-的标准io相关函数/">C++的标准io相关函数</a>
+    <h1 class="article-title" itemprop="name">
+      C++的标准io相关函数
     </h1>
   
 
@@ -189,6 +191,37 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogimg/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogimg/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -207,16 +240,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/11/C-的标准io相关函数/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/11/C-的标准io相关函数/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/10/C-类模板总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++类模板总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -231,508 +323,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-类模板总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/10/C-类模板总结/">C++类模板总结</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/10/C-类模板总结/" class="archive-article-date">
-  	<time datetime="2019-05-10T09:07:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="类模板-友元函数-操作符重载-static关键字-c-编译原理"><a href="#类模板-友元函数-操作符重载-static关键字-c-编译原理" class="headerlink" title="类模板\友元函数\操作符重载\static关键字\c++编译原理"></a>类模板\友元函数\操作符重载\static关键字\c++编译原理</h2><p><strong>1.类模板</strong><br>C++提供了函数模板(function template)。所谓函数模板，实际上是建立一个通用函数，其函数类型和形参类型不具体指定，用一个虚拟的类型来代表。这个通用函数就称为函数模板。凡是函数体相同的函数都可以用这个模板来代替，不必定义多个函数，只需在模板中定义一次即可。在调用函数时系统会根据实参的类型来取代模板中的虚拟类型，从而实现了不同函数的功能。<br>使用语法<code>template &lt;typename T&gt;</code><br>
-        
-          <a class="article-more-a" href="/2019/05/10/C-类模板总结/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/10/C-类模板总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-的标准输入输出流函数"><span class="toc-number">1.</span> <span class="toc-text">C++的标准输入输出流函数</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-C-多态与函数重载重写浅谈" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/09/C-多态与函数重载重写浅谈/">C++多态与函数重载重写浅谈</a>
-    </h1>
   
 
-        
-        <a href="/2019/05/09/C-多态与函数重载重写浅谈/" class="archive-article-date">
-  	<time datetime="2019-05-09T04:36:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="C-多态理解"><a href="#C-多态理解" class="headerlink" title="C++多态理解"></a>C++多态理解</h2><p><strong>多态的实现效果</strong><br>多态：同样的调用语句有多种不同的表现形态；<br>
-        
-          <a class="article-more-a" href="/2019/05/09/C-多态与函数重载重写浅谈/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/09/C-多态与函数重载重写浅谈/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux基本命令整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/08/Linux基本命令整理/">Linux基本命令整理</a>
-    </h1>
   
 
-        
-        <a href="/2019/05/08/Linux基本命令整理/" class="archive-article-date">
-  	<time datetime="2019-05-08T05:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Linux基本命令整理"><a href="#Linux基本命令整理" class="headerlink" title="Linux基本命令整理"></a>Linux基本命令整理</h2><p><strong>1.目录基本操作</strong><br>根目录的基本示意图<br>
-        
-          <a class="article-more-a" href="/2019/05/08/Linux基本命令整理/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/08/Linux基本命令整理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-插入排序与希尔排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/07/插入排序与希尔排序/">插入排序与希尔排序</a>
-    </h1>
   
 
-        
-        <a href="/2019/05/07/插入排序与希尔排序/" class="archive-article-date">
-  	<time datetime="2019-05-07T04:21:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p><strong>插入排序效率最高的时候是这个序列的元素有基本的顺序(如果是升序排列)即是小数在大多在前面,大数大多在后面.还有就是这个序列的元素不要太多</strong><br>
-        
-          <a class="article-more-a" href="/2019/05/07/插入排序与希尔排序/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">排序算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/07/插入排序与希尔排序/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-二叉树的非递归遍历-排序算法效率-Linux基本命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/07/二叉树的非递归遍历-排序算法效率-Linux基本命令/">二叉树的非递归遍历,排序算法效率,Linux基本命令</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/07/二叉树的非递归遍历-排序算法效率-Linux基本命令/" class="archive-article-date">
-  	<time datetime="2019-05-07T00:44:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="二叉树的非递归遍历和Linux基本操作"><a href="#二叉树的非递归遍历和Linux基本操作" class="headerlink" title="二叉树的非递归遍历和Linux基本操作"></a>二叉树的非递归遍历和Linux基本操作</h2><p>1.二叉树的非递归遍历<br>使用栈模型,利用先进后出的思想,把根节点带上FALSE的标志放入栈中,然后循环进行出栈入栈<br>①判断栈中元素是否为空,若栈中元素为空,则循环结束<br>②判断栈顶元素的标志是TRUE还是FALSE若为FALSE出栈以后找到他的左子树结点和右子数结点按顺序入栈(根据先进后出的原则,如果想要先序遍历,则先入右子数,再左子数,再根结点),此时根节点再次入栈时需要把根节点的标志改为TRUE,<br>③此方法值需要改变入栈顺序即可改变遍历的顺序<br>
-        
-          <a class="article-more-a" href="/2019/05/07/二叉树的非递归遍历-排序算法效率-Linux基本命令/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/07/二叉树的非递归遍历-排序算法效率-Linux基本命令/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-开始记录学习生活" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/06/开始记录学习生活/">开始记录学习生活</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/06/开始记录学习生活/" class="archive-article-date">
-  	<time datetime="2019-05-06T03:36:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是我用了一天多时间搭建的博客,搭建这个博客的目的在于记录学习生活,记录每天<br>都学到了什么,学习的路是很漫长的,但我坚信一句话”道阻且长,行则将至”,以后要坚<br>持每天都用这种方式记录自己的学习生活.加油</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/06/开始记录学习生活/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-搭建博客真快乐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/06/搭建博客真快乐/">搭建博客真快乐</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/06/搭建博客真快乐/" class="archive-article-date">
-  	<time datetime="2019-05-06T01:31:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>搭建一个博客真开心,希望会成功吧</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/06/搭建博客真快乐/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -755,8 +371,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
