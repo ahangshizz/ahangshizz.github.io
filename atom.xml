@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-11T11:39:04.342Z</updated>
+  <updated>2019-05-18T00:16:17.611Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的时间管理</title>
+    <link href="http://yoursite.com/2019/05/18/%E6%88%91%E7%9A%84%E6%97%B6%E9%97%B4%E7%AE%A1%E7%90%86/"/>
+    <id>http://yoursite.com/2019/05/18/我的时间管理/</id>
+    <published>2019-05-18T00:11:01.000Z</published>
+    <updated>2019-05-18T00:16:17.611Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于我自己来说,时间管理这个概念真的需要很深入,因为我选择了不一样的一条路,就算再怎么辛苦也会走下去,能坚持下去我相信必有收获<br>每天忙碌于必修的课程和自学之间,对于时间的掌握一定要非常的清晰,我需要清楚的知道,我在什么时间段该做什么事情,而不能因为忙碌了<br>其中一个而放弃了另外一个,专业知识固然重要,但是我觉得自学也是一件很重要的事情,这是对一个人的考验,它能让我培养出很不错的学习<br>能力,以后也要加油啊,每天用知识补充自身其实也是一件很开心的事情</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;对于我自己来说,时间管理这个概念真的需要很深入,因为我选择了不一样的一条路,就算再怎么辛苦也会走下去,能坚持下去我相信必有收获&lt;br&gt;每天忙碌于必修的课程和自学之间,对于时间的掌握一定要非常的清晰,我需要清楚的知道,我在什么时间段该做什么事情,而不能因为忙碌了&lt;br&gt;其中一
+      
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>C++的标准io相关函数</title>
