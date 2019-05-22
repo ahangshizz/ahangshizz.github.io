@@ -6,24 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Linux程序和进程 | 道阻且长</title>
+  <title>Linux进程间通信--管道 | 道阻且长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Linux程序和进程1.什么是程序程序是二进制文件,占用磁盘空间">
+  <meta name="description" content="Linux进程间通信1.什么是IPCinterprocess communication进程间通信2.进程间通信的四种方式a.管道——-简单b.信号——-系统开销小c.共享映射区d.套接字">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux程序和进程">
-<meta property="og:url" content="http://yoursite.com/2019/05/21/Linux程序和进程/index.html">
+<meta property="og:title" content="Linux进程间通信--管道">
+<meta property="og:url" content="http://yoursite.com/2019/05/22/Linux进程间通信-管道/index.html">
 <meta property="og:site_name" content="道阻且长">
-<meta property="og:description" content="Linux程序和进程1.什么是程序程序是二进制文件,占用磁盘空间">
+<meta property="og:description" content="Linux进程间通信1.什么是IPCinterprocess communication进程间通信2.进程间通信的四种方式a.管道——-简单b.信号——-系统开销小c.共享映射区d.套接字">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190521104419956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190521190746232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190521190830237.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-05-21T13:04:41.136Z">
+<meta property="og:updated_time" content="2019-05-22T13:09:53.640Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux程序和进程">
-<meta name="twitter:description" content="Linux程序和进程1.什么是程序程序是二进制文件,占用磁盘空间">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190521104419956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70">
+<meta name="twitter:title" content="Linux进程间通信--管道">
+<meta name="twitter:description" content="Linux进程间通信1.什么是IPCinterprocess communication进程间通信2.进程间通信的四种方式a.管道——-简单b.信号——-系统开销小c.共享映射区d.套接字">
   
     <link rel="alternative" href="/atom.xml" title="道阻且长" type="application/atom+xml">
   
@@ -167,35 +163,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Linux程序和进程" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Linux进程间通信-管道" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Linux程序和进程
+      Linux进程间通信--管道
     </h1>
   
 
         
-        <a href="/2019/05/21/Linux程序和进程/" class="archive-article-date">
-  	<time datetime="2019-05-21T01:37:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-21</time>
+        <a href="/2019/05/22/Linux进程间通信-管道/" class="archive-article-date">
+  	<time datetime="2019-05-22T13:08:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Linux程序和进程"><a href="#Linux程序和进程" class="headerlink" title="Linux程序和进程"></a>Linux程序和进程</h2><p><strong>1.什么是程序</strong><br><em>程序是二进制文件,占用磁盘空间</em><br><a id="more"></a><br><strong>2.什么是进程</strong><br><em>运行中的程序<br>所有的数据都在内存中<br>需要占用更多的系统资源(CPU,物理内存)</em><br><strong>3.pcb进程控制块</strong><br>实际上是一个结构体<br>里面放了很多数据<br><strong>4.进程的五种状态</strong><br><img src="https://img-blog.csdnimg.cn/20190521104419956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><strong>5.父进程子进程(fork)</strong><br>子进程是父进程的一份拷贝,唯一的区别就是他们的进程ID是不同的<br>fork函数<br>int fork(void)<br>函数有两个返回值父进程返回值为子进程的ID,子进程的返回值为0.<br><strong>6.写函数了解父子进程之间的关系</strong><br>pid_t(pid的一种数据类型)<br>getpid(得到当前进程的进程id)<br><em>子进程创建成功以后,代码执行位置?</em><br>父进程执行到哪里,子进程就从哪里开始执行<br>即(fork函数之后);<br><em>父子进程的执行顺序?</em><br>不一定,谁先抢到CPU资源谁先执行<br><strong>7.进程相关的命令</strong><br><strong>ps</strong><br>ps aux<br>ps aux | grep +进程名(更加详细的查找某个进程的详细信息)</p>
-<p><strong>kill:给进程发送一个信号</strong><br>kill -l 查看kill的所有信号<br>kill 9 +进程的pid   杀死某个进程</p>
-<p><img src="https://img-blog.csdnimg.cn/20190521190746232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70" alt="打开另外一个终端杀死一个死循环进程"><img src="https://img-blog.csdnimg.cn/20190521190830237.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70" alt="进程必死无疑"><strong>打开另外一个终端杀死一个死循环进程进程必死无疑</strong></p>
-<p><strong>8.父子进程之间能通过全局变量进行通信吗?</strong></p>
-<p>不能<br>两个进程之间的内存不能共享</p>
-<p><strong>9.exec函数族</strong><br><em>让父子进程执行不相干的操作<br>能够替换进程地址空间中的源代码.text段<br>当前程序中调用另外一个应用程序<br>execl(“绝对路径”,”占位”,”参数”,NULL);<br>NULL相当于一个哨兵,当函数运行到NULL则意味着参数结束</em><br><strong>execl(“/bin/ls”,”ls”,”-la”,NULL);(实例)</strong></p>
-<h2 id="进程回收"><a href="#进程回收" class="headerlink" title="进程回收"></a>进程回收</h2><p><strong>1.孤儿进程</strong><br><em>爹生孩子<br>爹先死,孩子还活着,孩子叫做孤儿进程<br>孤儿被init进程领养,init进程变成孤儿进程的父亲<br>目的:为了释放子进程占用的系统资源<br>    ①进程结束之后,能够释放用户区空间<br>    ②释放不了pcb,必须由父进程释放</em><br><strong>2.僵尸进程</strong><br><em>子进程死了(虽然死了还占用系统资源,需要释放pcb),父进程还活着,父进程不去释放子进程的pcb,子进程就变成了僵尸进程</em><br><strong>3.进程回收</strong><br><em>函数wait-阻塞函数</em><br>   pid_t wait(int<em> status);
-   </em>返回值<em><br>   -1:回收失败,已经没有子进程了<br>   大于0:回收子进程对应的pid
-   </em>参数:status*<br>   判断子进程是如何死的<br>   ①正常退出<br>   ②某个信号杀死<br>waitpid–</p>
+        <h2 id="Linux进程间通信"><a href="#Linux进程间通信" class="headerlink" title="Linux进程间通信"></a>Linux进程间通信</h2><p><strong>1.什么是IPC</strong><br>interprocess communication<br>进程间通信<br>2.进程间通信的四种方式<br>a.管道——-简单<br>b.信号——-系统开销小<br>c.共享映射区<br>d.套接字<br><a id="more"></a></p>
+<p><strong>3.管道(匿名)</strong><br><strong>本质</strong>:<em>内核的缓冲区</em>—伪文件(不占用磁盘空间)<br><strong>特点:</strong><br>两部分<br>读端  ———- 写端——对应两个文件描述符<br>数据写端流入,读端流出<br>原理:队列<br>环形队列<br>FIFO<br><strong>4.创建匿名管道</strong><br>int pipe(int fd[2])</p>
+<p>实现一个父子进程间的通信,结合了一下所学知识<br>execlp()   —-更换子进程的代码块<br>fork()———-生出子进程<br>wait()———-回收进程中的子进程<br>dup2———–实现标准输入输出重定向<br>pipe()———-创建一个管道</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fd[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">int</span> ret=pipe(fd);</span><br><span class="line">	<span class="keyword">pid_t</span> pid=fork();</span><br><span class="line">	<span class="keyword">if</span>(pid&gt;<span class="number">0</span>) &#123;</span><br><span class="line">	<span class="comment">//输出重定向,父进程执行   ps  aux操作</span></span><br><span class="line">	<span class="keyword">int</span> STDOUT_FILEON;</span><br><span class="line">	dup2(fd[<span class="number">1</span>],STDOUT_FILEON);</span><br><span class="line">	<span class="comment">//关闭读操作</span></span><br><span class="line">	close(fd[<span class="number">0</span>]);</span><br><span class="line">	execlp(<span class="string">"ps"</span>,<span class="string">"ps"</span>,<span class="string">"aux"</span>,<span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(pid==<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="comment">//输入重定向</span></span><br><span class="line">		<span class="keyword">int</span> STDIN_FILEON;</span><br><span class="line">		dup2(fd[<span class="number">0</span>],STDIN_FILEON);</span><br><span class="line">		<span class="comment">//关闭写操作</span></span><br><span class="line">		close(fd[<span class="number">1</span>]);</span><br><span class="line">		execlp(<span class="string">"grep"</span>,<span class="string">"grep"</span>,<span class="string">"weihang"</span>,<span class="string">"--color=auto"</span>,<span class="literal">NULL</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.管道的读行为<br>有数据的情况下:正常读取,返回读出的字节数<br>无数据的情况下:写端全部关闭,read解除阻塞,返回0.<br>6.管道的写行为<br>①读端全部关闭<br>管道破裂,进程被终止<br>②读端没有全部关闭<br>往缓冲区写</p>
+<h2 id="有名管道fifo-first-in-first-out"><a href="#有名管道fifo-first-in-first-out" class="headerlink" title="有名管道fifo(first in first out)"></a>有名管道fifo(first in first out)</h2><p><strong>1.特点</strong><br>有名管道<br>伪文件,在磁盘大小永远为0<br>在内核有一个对应的缓冲区<br><strong>2.使用场景</strong><br>没有血缘关系的进程间通信<br><strong>3.创建方式</strong><br>命令:mkfifo + 管道名</p>
 
       
 
@@ -296,7 +289,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/21/Linux程序和进程/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/22/Linux进程间通信-管道/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -310,18 +303,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/22/Linux进程间通信-管道/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Linux进程间通信--管道
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/05/18/我的时间管理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的时间管理</div>
+    <a href="/2019/05/21/Linux程序和进程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux程序和进程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -348,7 +332,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux程序和进程"><span class="toc-number">1.</span> <span class="toc-text">Linux程序和进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程回收"><span class="toc-number">2.</span> <span class="toc-text">进程回收</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux进程间通信"><span class="toc-number">1.</span> <span class="toc-text">Linux进程间通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有名管道fifo-first-in-first-out"><span class="toc-number">2.</span> <span class="toc-text">有名管道fifo(first in first out)</span></a></li></ol>
                     </div>
                 </span>
             </div>

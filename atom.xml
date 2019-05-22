@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-21T13:04:41.136Z</updated>
+  <updated>2019-05-22T13:09:53.640Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux进程间通信--管道</title>
+    <link href="http://yoursite.com/2019/05/22/Linux%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1-%E7%AE%A1%E9%81%93/"/>
+    <id>http://yoursite.com/2019/05/22/Linux进程间通信-管道/</id>
+    <published>2019-05-22T13:08:44.000Z</published>
+    <updated>2019-05-22T13:09:53.640Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Linux进程间通信"><a href="#Linux进程间通信" class="headerlink" title="Linux进程间通信"></a>Linux进程间通信</h2><p><strong>1.什么是IPC</strong><br>interprocess communication<br>进程间通信<br>2.进程间通信的四种方式<br>a.管道——-简单<br>b.信号——-系统开销小<br>c.共享映射区<br>d.套接字<br><a id="more"></a></p><p><strong>3.管道(匿名)</strong><br><strong>本质</strong>:<em>内核的缓冲区</em>—伪文件(不占用磁盘空间)<br><strong>特点:</strong><br>两部分<br>读端  ———- 写端——对应两个文件描述符<br>数据写端流入,读端流出<br>原理:队列<br>环形队列<br>FIFO<br><strong>4.创建匿名管道</strong><br>int pipe(int fd[2])</p><p>实现一个父子进程间的通信,结合了一下所学知识<br>execlp()   —-更换子进程的代码块<br>fork()———-生出子进程<br>wait()———-回收进程中的子进程<br>dup2———–实现标准输入输出重定向<br>pipe()———-创建一个管道</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> fd[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> ret=pipe(fd);</span><br><span class="line"><span class="keyword">pid_t</span> pid=fork();</span><br><span class="line"><span class="keyword">if</span>(pid&gt;<span class="number">0</span>) &#123;</span><br><span class="line"><span class="comment">//输出重定向,父进程执行   ps  aux操作</span></span><br><span class="line"><span class="keyword">int</span> STDOUT_FILEON;</span><br><span class="line">dup2(fd[<span class="number">1</span>],STDOUT_FILEON);</span><br><span class="line"><span class="comment">//关闭读操作</span></span><br><span class="line">close(fd[<span class="number">0</span>]);</span><br><span class="line">execlp(<span class="string">"ps"</span>,<span class="string">"ps"</span>,<span class="string">"aux"</span>,<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(pid==<span class="number">0</span>) &#123;</span><br><span class="line"><span class="comment">//输入重定向</span></span><br><span class="line"><span class="keyword">int</span> STDIN_FILEON;</span><br><span class="line">dup2(fd[<span class="number">0</span>],STDIN_FILEON);</span><br><span class="line"><span class="comment">//关闭写操作</span></span><br><span class="line">close(fd[<span class="number">1</span>]);</span><br><span class="line">execlp(<span class="string">"grep"</span>,<span class="string">"grep"</span>,<span class="string">"weihang"</span>,<span class="string">"--color=auto"</span>,<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>5.管道的读行为<br>有数据的情况下:正常读取,返回读出的字节数<br>无数据的情况下:写端全部关闭,read解除阻塞,返回0.<br>6.管道的写行为<br>①读端全部关闭<br>管道破裂,进程被终止<br>②读端没有全部关闭<br>往缓冲区写</p><h2 id="有名管道fifo-first-in-first-out"><a href="#有名管道fifo-first-in-first-out" class="headerlink" title="有名管道fifo(first in first out)"></a>有名管道fifo(first in first out)</h2><p><strong>1.特点</strong><br>有名管道<br>伪文件,在磁盘大小永远为0<br>在内核有一个对应的缓冲区<br><strong>2.使用场景</strong><br>没有血缘关系的进程间通信<br><strong>3.创建方式</strong><br>命令:mkfifo + 管道名</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Linux进程间通信&quot;&gt;&lt;a href=&quot;#Linux进程间通信&quot; class=&quot;headerlink&quot; title=&quot;Linux进程间通信&quot;&gt;&lt;/a&gt;Linux进程间通信&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;1.什么是IPC&lt;/strong&gt;&lt;br&gt;interprocess communication&lt;br&gt;进程间通信&lt;br&gt;2.进程间通信的四种方式&lt;br&gt;a.管道——-简单&lt;br&gt;b.信号——-系统开销小&lt;br&gt;c.共享映射区&lt;br&gt;d.套接字&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux程序和进程</title>
