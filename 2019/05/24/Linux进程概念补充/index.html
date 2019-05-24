@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Linux | 道阻且长</title>
+  <title>Linux进程概念补充 | 道阻且长</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此博客用来作为日常学习记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="道阻且长">
-<meta property="og:url" content="http://yoursite.com/tags/Linux/index.html">
+  <meta name="description" content="Linux 进程概念">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux进程概念补充">
+<meta property="og:url" content="http://yoursite.com/2019/05/24/Linux进程概念补充/index.html">
 <meta property="og:site_name" content="道阻且长">
-<meta property="og:description" content="此博客用来作为日常学习记录">
+<meta property="og:description" content="Linux 进程概念">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-24T08:59:24.670Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="道阻且长">
-<meta name="twitter:description" content="此博客用来作为日常学习记录">
+<meta name="twitter:title" content="Linux进程概念补充">
+<meta name="twitter:description" content="Linux 进程概念">
   
     <link rel="alternative" href="/atom.xml" title="道阻且长" type="application/atom+xml">
   
@@ -161,36 +163,162 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Linux进程概念补充" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Linux进程概念补充
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/24/Linux进程概念补充/" class="archive-article-date">
+
+        
+        <a href="/2019/05/24/Linux进程概念补充/" class="archive-article-date">
   	<time datetime="2019-05-24T08:58:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-24</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/24/Linux进程概念补充/">Linux进程概念补充</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Linux 进程概念<br><a id="more"></a></p>
+<pre><code>    僵尸进程:处于僵死状态的进程-进程退出,但是资源没有完全被释放
+    产生原因:子进程先于父进程退出,退出后操作系统通知父进程,获取子进程的返回值,并且允许操作系统释放子进程资源(没有完全释放为了保存退出原因),父进程没有关注子进程
+             的退出,这个时候子进程处于僵尸状态成为僵尸进程
+    处理方式:退出父进程
+             避免产生僵尸进程:进程等待
 
-        <div class="article-info info-on-right">
-          
+    孤儿进程:父进程先于子进程退出,子进程成为孤儿进程,运行在后台,并且父进程成为1号进程
+
+    守护进程(精灵进程):使用场景与实现
+
+
+
+    环境变量:用于储存系统运行环境参数的变量-----让系统的参数设置更加简单
+
+        环境变量的相关命令:
+                查看环境变量   env    set     echo
+
+        添加环境变量 :    export
+
+        删除环境变量 :    unset
+
+        常见环境变量 :    HOME    USER      PWD         SHELL          PATH
+
+        环境变量特性 :    全局特性(父子进程之间的继承关系) 
+
+    代码中操作环境变量:
+            main函数中的第三个参数    int main(int argc ,char*argv[],char*env[])
+
+
+
+程序地址空间:   百度网盘例子
+
+
+进程之间输入独有
+
+内存地址: 内存区域的一个编号
+
+虚拟地址:--虚拟地址空间    
+mm_struct  {
+
+    ulong mem_size
+    ulong code_start
+    ulong code_end
+}
+
+虚拟地址空间是什么:
+    我们看到的程序的地址空间实际上是一个虚拟地址空间,实际上是操作系统通过mm_struct这个结构体为进程描述的一个空间,因此有时候也称为内存描述符
+
+为什么要使用虚拟地址空间?
+    进程通过访问虚拟地址空间而获取变量数据,最终还是要访问物理内存,因为数据是存储在物理内存中的
+
+在虚拟地址和物理地址之间通过页表进行地质映射,转换得到物理地址,进而访问物理内存区域,通过映射之后,物理地址可就不一定连续了,通过这种映射转换的方式实现数据的离散存储,提高内存利用率
+
+
+
+页表中不但记录的虚拟地址和物理地址的映射关系,并且还记录了这快地址的属性实现内存访问控制
+
+
+
+创建子进程都发生了什么?
+写时拷贝技术:操作系统通过复制父进程创建子进程,子进程初始时与父进程指向同一块物理内存区域,当内存数据发生改变时,会为子进程重新开辟内存更新页表
+进程的独立性:进程应该具有独立性,因为独立才更加稳定
+
+虚拟地址空间有什么用?
+    提高内存利用率,增加内存访问控制,保存进程的独立性
+
+页表如何将虚拟地址转换为物理地址:
+
+分段式内存管理:通过地址中的段号去段表中找到段表项,通过段表项中的物理段起始地址加上地址中的段内偏移获取到物理内存
+
+    内存地址的构成:段号+段内偏移
+    段表-------有很多的段表项
+                (物理段的起始地址)
+
+分页式内存管理:通过地址中的页号去页表中找到页表项,通过页表项中的物理页号加上页内偏移获取到物理地址
+
+    内存地址的构成: 页号 + 页内偏移
+
+    页表----有很多页表
+
+
+(目前使用的内存管理方式)
+段页式内存管理:通过段号在段表中找倒段表项,通过段表项中的段内页表地址找倒段内页表,通过地址中的段内页号在段内页表中找到页表项,通过页表项中的物理页号与页内偏移组成物理内存
+
+    内存地址:段号+ 段内页号+ 页内偏移
+    段表项中有段内页表的起始地址
+    段内页表项中又包含物理页号
+
+
+内存置换算法:
+    内存只有4G,但是要处理5G的数据怎么解决
+
+    swap分区也叫交换内存:  内存不够的时候,将内存中的数据置换到交换分区中,腾出内存处理数据
+    FIFo:先进先出
+    LFU:最近使用频率最少的
+    LRU:最近最久未使用的
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogimg/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogimg/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -202,133 +330,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/05/24/Linux进程概念补充/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/22/Linux进程间通信-管道/" class="archive-article-date">
-  	<time datetime="2019-05-22T13:08:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/22/Linux进程间通信-管道/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux进程间通信--管道</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/22/Linux进程间通信-管道/">Linux进程间通信--管道</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/21/Linux程序和进程/" class="archive-article-date">
-  	<time datetime="2019-05-21T01:37:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-21</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/21/Linux程序和进程/">Linux程序和进程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/08/Linux基本命令整理/" class="archive-article-date">
-  	<time datetime="2019-05-08T05:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/08/Linux基本命令整理/">Linux基本命令整理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -351,9 +465,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
