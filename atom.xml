@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-24T08:59:24.670Z</updated>
+  <updated>2019-05-28T09:41:37.190Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux信号初识</title>
+    <link href="http://yoursite.com/2019/05/28/Linux%E4%BF%A1%E5%8F%B7%E5%88%9D%E8%AF%86/"/>
+    <id>http://yoursite.com/2019/05/28/Linux信号初识/</id>
+    <published>2019-05-28T09:40:41.000Z</published>
+    <updated>2019-05-28T09:41:37.190Z</updated>
+    
+    <content type="html"><![CDATA[<p>@[toc]</p><h1 id="一-信号的初步认识"><a href="#一-信号的初步认识" class="headerlink" title="一.信号的初步认识"></a>一.信号的初步认识</h1><font color="red" size="4">1.特点</font><br>①简单<br>②携带的信息量少<br>③使用在某个特定场景中<br><a id="more"></a><br><font color="red" size="4">2.信号的状态</font><br>①产生<br><font color="blue" size="3">如Ctrl+c…..kill……软条件:定时器……硬件:段错误/除0错误</font><br>②未决状态–没有被处理<br>③递达—   被处理的信号<br><img src="https://img-blog.csdnimg.cn/2019052813491863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfaGFuZ19zeno=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><font color="red" size="4">3.阻塞信号集,未决信号集</font><br>①pcb<br>②不能直接操作<br>③阻塞信号集:<br>    <font color="blue" size="3">要屏蔽的信号</font><br>    ④未决信号集:<br>    <font color="blue" size="3">没有被处理的信号的集合</font><h1 id="二-信号相关函数"><a href="#二-信号相关函数" class="headerlink" title="二.信号相关函数"></a>二.信号相关函数</h1><font color="red" size="4">1.kill函数</font><br><font color="blue" size="3">kill(pid_t pid,SIGNAL)</font><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">pid_t</span> pid=fork();</span><br><span class="line"><span class="keyword">if</span>(pid&lt;<span class="number">0</span>) &#123;</span><br><span class="line">perror(<span class="string">"fork"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(pid&gt;<span class="number">0</span>) &#123;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"i am you parent %d \n"</span>,getpid());</span><br><span class="line">sleep(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(pid==<span class="number">0</span>) &#123;</span><br><span class="line">sleep(<span class="number">2</span>);</span><br><span class="line">kill(getppid(),SIGKILL);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br><font color="red" size="4">2.raise–自己给自己发信号</font><br>函数原型<br><font color="blue" size="3">int raise(int sig);</font><font color="red" size="4">3.setitimer–定时器,实现周期定时</font><br>函数原型<br><font color="blue" size="3">int setitimer(int which,const struct itimerval <em>new_value,struct itimerval </em>old_value);</font><h1 id="三-信号集"><a href="#三-信号集" class="headerlink" title="三.信号集"></a>三.信号集</h1><font color="red" size="4">1.概念</font><br>①未决信号集<br>没有被当前进程处理的信号<br>②阻塞信号集<br>将某个信号放到阻塞信号集,这个信号就不会被进程处理<br>阻塞解除之后,信号被处理<br><font color="red" size="4">2.自定义信号集</font><br><font color="blue" size="3">int sigemptyset(sigset_t<em> set)</em></font>将所有信号集合置空<br><font color="blue" size="3">int sigfillset(sigset_t set)</font>将所有信号加入set集合<br><font color="blue" size="3">int sigaddset(sigset<em> set,int signo)</em></font>将signo信号加入到set集合<br><font color="blue" size="3">int sigdelset(sigset_t set,int signo);</font>从set集合中移除signo信号<br><font color="blue" size="3">int sigisnenber(const sigset_t<em> set,int signo);</em></font>判断信号是否存在<br><br><font color="red" size="4">3.sigprocmask函数</font><br>把自定义信号集设置给内核中的阻塞信号集<br><font color="red" size="4">4.sigpenging读取当前进程的未决信号</font><br><font color="blue" size="3">int sigpengding(sigset_t set);</font>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;@[toc]&lt;/p&gt;
+&lt;h1 id=&quot;一-信号的初步认识&quot;&gt;&lt;a href=&quot;#一-信号的初步认识&quot; class=&quot;headerlink&quot; title=&quot;一.信号的初步认识&quot;&gt;&lt;/a&gt;一.信号的初步认识&lt;/h1&gt;&lt;font color=&quot;red&quot; size=&quot;4&quot;&gt;1.特点&lt;/font&gt;&lt;br&gt;①简单&lt;br&gt;②携带的信息量少&lt;br&gt;③使用在某个特定场景中&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux进程概念补充</title>
